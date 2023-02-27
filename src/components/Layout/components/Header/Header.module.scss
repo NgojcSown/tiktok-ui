@@ -1,4 +1,8 @@
 .wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-space: 9px;
+    --search-button--right: 52px;
     height: var(--default-layout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
@@ -7,4 +11,74 @@
 .content {
     height: 100%;
     width: var(--default-layout-width);
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+}
+
+.search {
+    position: relative;
+    display: flex;
+    margin-top: 5px;
+    width: 361px;
+    height: 46px;
+    background: #ccc;
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    border: 1.5px solid transparent;
+    input {
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        border: none;
+        caret-color: var(--primary);
+        background-color: transparent;
+        outline: none;
+    }
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: red;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        height: var(--search-height)-18px;
+        width: 1px;
+        top: calc(var(--search-height) - var(--search-top-space) * 2);
+        right: var(--search-button--right);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+.clear,
+.loading {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--search-button--right) + 16px);
+    transform: translateY(-50%);
+    background-color: rgba(22, 24, 35, 0.2);
+    background-color: transparent;
+}
+
+.search-btn {
+    width: var(--search-button--right);
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+
+    &:hover {
+        cursor: pointer;
+        color: rgba(22, 24, 35, 0.03);
+    }
+    &:active {
+        background-color: rgba(22, 26, 35, 0.03);
+    }
 }
