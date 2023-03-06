@@ -7,19 +7,38 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as ProperWrapper } from '~/components/Proper';
 import AccountItem from '~/components/SearchAccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Proper/Menu';
 
 const cx = classNames.bind(styles)
 function Header() {
     const [searchResult, setSearchResult] = useState([])
+    const [moreMenu, setMoreMenu] = useState([])
 
+    const MENU_ITEMS = [
+        {
+            icon: <i class="fa-solid fa-language"></i>,
+            title: 'English',
+        },
+        {
+            icon: <i class="fa-regular fa-circle-question"></i>,
+            title: 'Feedback and help',
+            to: '/feedback'
+        },
+        {
+            icon: <i class="fa-regular fa-keyboard"></i>,
+            title: 'Keyboard shortcuts',
+        }
+    ]
     useEffect(() => {
-
+        setTimeout(() => {
+            setMoreMenu([1, 2, 3])
+        }, 0)
     })
     return (
         <header className={cx('wrapper')}>
             <div className={cx('content')}>
                 <div className={cx('logo)')}>
-                    <img src={images.logo.default} alt='tik tok' />
+                    <img src={images.logo.default} alt='tik tok' style={{ marginTop: '120px' }} />
                 </div>
                 <Tippy
                     interactive
@@ -60,6 +79,13 @@ function Header() {
                     <Button primary rightIcon={<i className="fas fa-sign-in-alt"></i>} >
                         Login
                     </Button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('more-btn')}>
+                            <i className="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </Menu>
+
+
                 </div>
             </div>
         </header >);
