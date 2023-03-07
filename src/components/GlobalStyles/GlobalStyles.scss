@@ -3,13 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,900;1,300&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,800&display=swap');
 
 :root {
+    --white: #fff;
+    --primary: red;
     //DefaultLayout
     --black: black;
     --text-color: #333;
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
-    --white: #fff;
-    --primary: red;
+    --default-layout-horizontal-spacer: 24px;
 }
 
 * {
@@ -35,4 +36,24 @@ input,
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+
+//Custom tippy tool
+body {
+    .tippy-box {
+        background-color: rgba(84, 84, 84, 0.92);
+        font-size: 1.6rem;
+        border-radius: 8px;
+        line-height: 2.2rem;
+        font-weight: 600;
+    }
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow {
+        top: -1px;
+    }
+    .tippy-content {
+        padding: 9px 9px;
+    }
 }

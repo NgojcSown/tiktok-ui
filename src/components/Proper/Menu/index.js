@@ -1,16 +1,30 @@
+/* eslint-disable no-undef */
+import { useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
+import classNames from 'classnames/bind';
 import { Wrapper as ProperWrapper } from '~/components/Proper';
 import MenuItems from './MenuItem';
-import classNames from 'classnames/bind';
+import Header from './Header.js';
 import styles from './Menu.module.scss'
 
 const cx = classNames.bind(styles)
 
-function Menu({ children, items = [] }) {
+const defaultFn = () => { }
+function Menu({ children, items = [], onChange = defaultFn }) {
+
+    const [history, setHistory] = useState([{ data: items }])
+    const current = history[history.length - 1]
 
     const renderMenu = () => {
-        return items.map((item, index) => {
-            return < MenuItems key={index} data={item} />
+        return current.data.map((item, index) => {
+            const isParent = !!item.children
+            return < MenuItems key={index} data={item} onClick={() => {
+                if (isParent) {
+                    setHistory((prev) => [...prev, item.children])
+                } else {
+                    onChange(item)
+                }
+            }} />
         })
 
     }
@@ -22,10 +36,14 @@ function Menu({ children, items = [] }) {
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <ProperWrapper className={cx('menu-proper')}>
+                        {history.length > 1 && <Header title='Language' onBack={() => {
+                            setHistory(prev => prev.slice(0, prev.length - 1))
+                        }} />}
                         {renderMenu()}
                     </ProperWrapper>
                 </div>
             )}
+            onHide={() => setHistory(prev => prev.slice(0, 1))}
         >
             {children}
         </Tippy>

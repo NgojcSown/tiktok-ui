@@ -10,6 +10,7 @@
 .content {
     height: 100%;
     width: var(--default-layout-width);
+    padding: 0 var(--default-layout-horizontal-spacer);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -92,6 +93,10 @@
         background-color: rgba(22, 26, 35, 0.03);
     }
 }
+.actions {
+    display: flex;
+    align-items: center;
+}
 .more-btn {
     margin-left: 40px;
     width: 20px;
@@ -101,4 +106,19 @@
     align-items: center;
     display: inline-flex;
     padding: 4px 8px;
+    cursor: pointer;
+}
+.action-btn {
+    background-color: transparent;
+    font-size: 2.2rem;
+    padding: 4px 12px;
+    color: #161823;
+}
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 20px;
+    cursor: pointer;
 }
