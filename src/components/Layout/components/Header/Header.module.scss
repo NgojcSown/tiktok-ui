@@ -39,6 +39,7 @@
         border: none;
         caret-color: var(--primary);
         background-color: transparent;
+
         outline: none;
     }
     input:not(:placeholder-shown) ~ .search-btn {
@@ -84,6 +85,7 @@
     background-color: transparent;
     border-top-right-radius: var(--search-border-radius);
     border-bottom-right-radius: var(--search-border-radius);
+    border-left: 1px solid rgba(22, 24, 35, 0.2);
 
     &:hover {
         cursor: pointer;
@@ -111,7 +113,7 @@
 .action-btn {
     background-color: transparent;
     font-size: 2.2rem;
-    padding: 4px 12px;
+    padding: 4px 8px;
     color: #161823;
 }
 .user-avatar {

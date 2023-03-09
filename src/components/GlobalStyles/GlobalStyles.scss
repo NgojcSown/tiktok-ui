@@ -23,7 +23,7 @@ html {
     font-size: 62.5%;
 }
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Proximanova', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
 }
@@ -36,6 +36,32 @@ input,
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+//Fonts emmbeded
+@font-face {
+    font-family: Proximanova;
+    src: url('~/src/assets/font/Proxima-Nova-Regular.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Proximanova;
+    src: url('~/src/assets/font/ProximaNova-Semibold.woff2');
+    font-weight: 600;
+}
+@font-face {
+    font-family: SofiaPro;
+    src: url('~/src/assets/font/sofiapro-semibold.otf');
+    font-weight: 600;
+}
+@font-face {
+    font-family: Proximanova;
+    src: url('~/src/assets/font/Proxima-Nova-Bold.woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: SofiaPro;
+    src: url('~/src/assets/font/sofiapro-bold.woff2');
+    font-weight: 700;
 }
 
 //Custom tippy tool

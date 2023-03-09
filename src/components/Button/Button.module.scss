@@ -3,6 +3,7 @@
     align-items: center;
     font-weight: 700;
     font-size: 16px;
+    font-family: 'Proximanova', sans-serif;
     border-radius: 4px;
     min-width: 100px;
     padding: 9px 16px;
@@ -79,6 +80,10 @@
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
+}
+.btn-upload {
+    margin-top: 0px;
+    margin-right: 10px;
 }
 
 //disable

@@ -12,6 +12,9 @@ import AccountItem from '~/components/SearchAccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Proper/Menu';
 import MenuItems from '~/components/Proper/Menu/MenuItem';
+import { InboxIcon, MessageIcon, SearchIcon } from '~/components/Icon';
+
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles)
 function Header() {
@@ -120,8 +123,8 @@ function Header() {
                             <i className={cx('fa-solid fa-spinner')}></i>
                         </div>
 
-                        <button className={cx('search-btn')} >
-                            <i className={cx("fa-solid fa-magnifying-glass")}></i>
+                        <button className={cx('search-btn')}  >
+                            <SearchIcon />
                         </button>
                     </div>
                 </HeadlessTippy>
@@ -129,9 +132,17 @@ function Header() {
                     {currentUser ?
                         <>
                             <Tippy delay={[0, 200]} content='Upload video' placement='bottom'>
-                                <button className={cx('action-btn')}>
-                                    <i className="fa-solid fa-cloud-arrow-up"></i>
-                                </button>
+                                <>
+                                    <Button text className={cx('btn-upload')}  >
+                                        + Upload
+                                    </Button>
+                                    <button className={cx('action-btn')}>
+                                        <MessageIcon />
+                                    </button>
+                                    <button className={cx('action-btn')}>
+                                        <InboxIcon />
+                                    </button>
+                                </>
                             </Tippy>
 
 
@@ -148,7 +159,7 @@ function Header() {
                         </>}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ?
-                            <img className={cx('user-avatar')} src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/39911deb09b62b80810dec42c0722bbd~c5_100x100.jpeg?x-expires=1678316400&x-signature=2zEfHmiEONNNXlge3yee%2FEOhiPY%3D' alt='tik tok' />
+                            <Image className={cx('user-avatar')} src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/e6703fc12314dcfd7a60c63f9dc732a7~c5_720x720.jpeg?x-expires=1678471200&x-signature=VdL75k0VMVmz7sLHKHUuhMIfJis%3D' alt='tik tok' />
                             :
                             <button className={cx('more-btn')}>
                                 <i className="fa-solid fa-ellipsis-vertical"></i>
