@@ -18,83 +18,6 @@
 .logo {
     margin-top: 60px;
 }
-.search,
-.search-result {
-    width: 361px;
-}
-.search {
-    position: relative;
-    display: flex;
-    margin-top: 5px;
-    height: 46px;
-    background: #ccc;
-    border-radius: var(--search-border-radius);
-    padding-left: 16px;
-    border: 1.5px solid transparent;
-    input {
-        flex: 1;
-        height: 100%;
-        color: var(--black);
-        font-size: 1.6rem;
-        border: none;
-        caret-color: var(--primary);
-        background-color: transparent;
-
-        outline: none;
-    }
-    input:not(:placeholder-shown) ~ .search-btn {
-        color: red;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        height: var(--search-height)-18px;
-        width: 1px;
-        top: calc(var(--search-height) - var(--search-top-space) * 2);
-        right: var(--search-button--right);
-        background-color: rgba(22, 24, 35, 0.03);
-    }
-    &:focus-within {
-        border-color: rgba(22, 24, 35, 0.2);
-    }
-}
-
-.search-title {
-    color: rgba(22, 24, 35, 0.5);
-    font-size: 1.4rem;
-    font-weight: 600;
-    padding: 5px 12px;
-}
-
-.clear,
-.loading {
-    position: absolute;
-    top: 50%;
-    right: calc(var(--search-button--right) + 16px);
-    transform: translateY(-50%);
-    background-color: rgba(22, 24, 35, 0.2);
-    background-color: transparent;
-}
-
-.search-btn {
-    width: var(--search-button--right);
-    height: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    border-top-right-radius: var(--search-border-radius);
-    border-bottom-right-radius: var(--search-border-radius);
-    border-left: 1px solid rgba(22, 24, 35, 0.2);
-
-    &:hover {
-        cursor: pointer;
-        color: rgba(22, 24, 35, 0.03);
-    }
-    &:active {
-        background-color: rgba(22, 26, 35, 0.03);
-    }
-}
 .actions {
     display: flex;
     align-items: center;
@@ -123,4 +46,13 @@
     border-radius: 50%;
     margin-left: 20px;
     cursor: pointer;
+}
+.notification {
+    position: absolute;
+    background-color: red;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    width: 1.5%;
+    margin-left: -1rem;
 }

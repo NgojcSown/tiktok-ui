@@ -1,25 +1,19 @@
-import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
 
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import { Wrapper as ProperWrapper } from '~/components/Proper';
-import AccountItem from '~/components/SearchAccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Proper/Menu';
-import MenuItems from '~/components/Proper/Menu/MenuItem';
-import { InboxIcon, MessageIcon, SearchIcon } from '~/components/Icon';
+import { InboxIcon, MessageIcon } from '~/components/Icon';
 
 import Image from '~/components/Image';
+import Search from '../Search';
 
 const cx = classNames.bind(styles)
 function Header() {
-    const [searchResult, setSearchResult] = useState([])
-    const [moreMenu, setMoreMenu] = useState([])
     const currentUser = true
 
     const MENU_ITEMS = [
@@ -51,11 +45,7 @@ function Header() {
             title: 'Keyboard shortcuts',
         }
     ]
-    useEffect(() => {
-        setTimeout(() => {
-            setMoreMenu([1, 2, 3])
-        }, 0)
-    })
+
     //Handle Logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -96,38 +86,7 @@ function Header() {
                 <div className={cx('logo)')}>
                     <img src={images.logo.default} alt='tik tok' style={{ marginTop: '120px' }} />
                 </div>
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <ProperWrapper>
-                                <h3 className={cx('search-title')}>
-                                    Acounts
-                                </h3>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </ProperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder='Search accounts and videos' alt='search' spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <i className={cx('fa-regular fa-circle-xmark')}></i>
-                        </button>
-                        <div className={cx('loading')}>
-                            <i className={cx('fa-solid fa-spinner')}></i>
-                        </div>
-
-                        <button className={cx('search-btn')}  >
-                            <SearchIcon />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ?
                         <>
@@ -141,6 +100,7 @@ function Header() {
                                     </button>
                                     <button className={cx('action-btn')}>
                                         <InboxIcon />
+                                        <span className={cx('notification')}>12</span>
                                     </button>
                                 </>
                             </Tippy>

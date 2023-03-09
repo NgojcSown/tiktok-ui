@@ -1,18 +1,18 @@
 import classNames from "classnames/bind";
 import styles from './AccountItem.module.scss'
-
-
+import Image from '~/components/Image'
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles)
-function AccountItem() {
-    return (<div className={cx('wrapper-account')}>
-        <img className={cx('avatar')} src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/9c1763d086163fc41c05a6d731057f7f~c5_300x300.webp?x-expires=1678050000&x-signature=QdBrCbH%2BAFRsxqDUAxuOvoqStVk%3D  " alt="Hoaa" />
+function AccountItem({ data }) {
+    return (<Link to={`/@${data.nickname}`} className={cx('wrapper-account')}>
+        <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
         <div className={cx('info')}>
-            <h4 className={cx('name')}><span>Nguyen Ngoc Hoa</span>
-                <i className={cx("fa-solid fa-circle-check")} style={{ color: 'rgb(32, 213, 236)', fontSize: '1.4rem', marginLeft: '9px' }} />
+            <h4 className={cx('name')}><span>{data.full_name}</span>
+                {data.tick && <i className={cx("fa-solid fa-circle-check")} style={{ color: 'rgb(32, 213, 236)', fontSize: '1.4rem', marginLeft: '9px' }} />}
             </h4>
-            <span className={cx('username')}>hoa_Ngo</span>
+            <span className={cx('username')}>{data.nickname}</span>
         </div>
-    </div>);
+    </Link>);
 }
 
 export default AccountItem;

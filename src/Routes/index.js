@@ -8,7 +8,7 @@ import Search from '~/pages/Search';
 export const publicRoute = [
     { path: '/', component: Home },
     { path: '/following', component: Following },
-    { path: '/profile', component: Profile },
+    { path: '/:nickname', component: Profile },
     { path: '/search', component: Search, layout: null },
     { path: '/upload', component: Upload, layout: HeaderOnly }
 
