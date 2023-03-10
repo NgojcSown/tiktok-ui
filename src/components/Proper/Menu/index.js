@@ -10,7 +10,7 @@ import styles from './Menu.module.scss'
 const cx = classNames.bind(styles)
 
 const defaultFn = () => { }
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, hideOnClick = false, items = [], onChange = defaultFn }) {
 
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1]
@@ -30,6 +30,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     }
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             delay={[0, 800]}
             interactive
             placement='bottom-end'
@@ -39,7 +40,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                         {history.length > 1 && <Header title='Language' onBack={() => {
                             setHistory(prev => prev.slice(0, prev.length - 1))
                         }} />}
-                        {renderMenu()}
+                        <div className={cx('menu-scrollbar')}>{renderMenu()}</div>
                     </ProperWrapper>
                 </div>
             )}

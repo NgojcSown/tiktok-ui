@@ -6,6 +6,11 @@
 }
 .menu-proper {
     padding-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.menu-scrollbar {
+    overflow-y: auto;
 }
 
 //Menu Items
@@ -29,6 +34,7 @@
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .back-btn {
