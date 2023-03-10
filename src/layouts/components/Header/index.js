@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import styles from './Header.module.scss';
 
 import Tippy from '@tippyjs/react';
@@ -85,7 +85,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('content')}>
-                <Link to={routesConfig.home} className={cx('logo)')}>
+                <Link to={config.routes.home} className={cx('logo)')}>
                     <img src={images.logo.default} alt='tik tok' style={{ marginTop: '120px' }} />
                 </Link>
                 <Search />
