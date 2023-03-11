@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-
+import PropTypes from 'prop-types'
 
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -103,4 +103,8 @@ function Search() {
         </div>);
 }
 
+
+AccountItem.propTypes = {
+    data: PropTypes.object
+}
 export default Search;

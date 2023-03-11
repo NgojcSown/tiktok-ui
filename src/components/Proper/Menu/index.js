@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { useState } from 'react';
+import PropTypes from 'prop-types'
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { Wrapper as ProperWrapper } from '~/components/Proper';
@@ -37,7 +38,7 @@ function Menu({ children, hideOnClick = false, items = [], onChange = defaultFn 
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <ProperWrapper className={cx('menu-proper')}>
-                        {history.length > 1 && <Header title='Language' onBack={() => {
+                        {history.length > 1 && <Header title={current.title} onBack={() => {
                             setHistory(prev => prev.slice(0, prev.length - 1))
                         }} />}
                         <div className={cx('menu-scrollbar')}>{renderMenu()}</div>
@@ -49,6 +50,13 @@ function Menu({ children, hideOnClick = false, items = [], onChange = defaultFn 
             {children}
         </Tippy>
     );
+}
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    hideOnClick: PropTypes.bool,
+    items: PropTypes.array,
+    onChange: PropTypes.func
 }
 
 export default Menu;
