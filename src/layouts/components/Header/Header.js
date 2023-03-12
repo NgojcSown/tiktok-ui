@@ -86,7 +86,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('content')}>
                 <Link to={config.routes.home} className={cx('logo)')}>
-                    <img src={images.logo.default} alt='tik tok' style={{ marginTop: '120px' }} />
+                    <img src={images.logo.default} alt='tik tok' style={{ height: '40px' }} />
                 </Link>
                 <Search />
                 <div className={cx('actions')}>
