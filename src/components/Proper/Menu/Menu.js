@@ -29,23 +29,32 @@ function Menu({ children, hideOnClick = false, items = [], onChange = defaultFn 
         })
 
     }
+
+    const handleResetFirstPage = () => {
+        setHistory(prev => prev.slice(0, 1))
+    }
+
+    const handleBack = () => {
+        setHistory(prev => prev.slice(0, prev.length - 1))
+    }
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <ProperWrapper className={cx('menu-proper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                <div className={cx('menu-scrollbar')}>{renderMenu()}</div>
+            </ProperWrapper>
+        </div>
+    )
+
     return (
         <Tippy
             hideOnClick={hideOnClick}
             delay={[0, 800]}
             interactive
             placement='bottom-end'
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <ProperWrapper className={cx('menu-proper')}>
-                        {history.length > 1 && <Header title={current.title} onBack={() => {
-                            setHistory(prev => prev.slice(0, prev.length - 1))
-                        }} />}
-                        <div className={cx('menu-scrollbar')}>{renderMenu()}</div>
-                    </ProperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory(prev => prev.slice(0, 1))}
+            render={renderResult}
+            onHide={handleResetFirstPage}
         >
             {children}
         </Tippy>
